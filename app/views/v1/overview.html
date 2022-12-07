@@ -1,0 +1,139 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Overview – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-l">
+        XBRL Validator overview
+      </h1>
+
+      <h2 class="govuk-heading-m">Overview of the Process</h2>
+
+      <h3 class="govuk-heading-s">What is XBRL?</h3>
+
+      <p>eXtensible Business Reporting Language (XBRL) is an XML-based standard to describe financial data, and facilitate the creation, distribution and 
+        re-use of business reports. XBRL is developed by the <a href="https://www.xbrl.org/" class="govuk-link">XBRL International consortium</a>, and is 
+        defined in the <a href="https://specifications.xbrl.org/work-product-index-group-base-spec-base-spec.html" class="govuk-link">XBRL v2.1 specification</a>.</p>
+
+      <h3 class="govuk-heading-s">What is inline XBRL?</h3>
+
+      <p>Inline XBRL (iXBRL) is a standard for tagging XBRL within an HTML (i.e. HTML or XHTML) document.</p>
+
+      <p>Companies House requires all submissions to be well-formed XML, to be provided as XHTML and to be valid iXBRL (XHTML will enable more rigorous 
+        checking of the mark-up to be performed).</p>
+
+      <p>The main objective of iXBRL is to enable XBRL data to be displayed in situations where the producer wants to preserve a specific visual presentation 
+        of the information, while still allowing access to the underlying input data. It enables data to be presented in a manner dictated by the presenter, while 
+        also allowing the underlying XBRL tags to be processed automatically by consuming applications.</p>
+
+      <p>iXBRL-enabled applications allow the preparer to publish an HTML version of their accounts laid out and formatted as they wish - consequently the necessity 
+        to render accounts via stylesheets with their accompanying limitations has been removed.</p>
+
+      <h3 class="govuk-heading-s">XBRL Validation Service</h3>
+
+      <p>Companies House have adopted XBRL v2.1 for electronic filing of audit exempt accounts. In order to assist the development of third party software to 
+        use the service, we provide an XBRL Validation Service that allows users to test submissions for conformance with the Companies House taxonomy.</p>
+
+      <p>The validation service will cater for both inline XBRL and 'raw' XBRL. (For inline XBRL submissions, the underlying XBRL content will be extracted prior 
+        to performing the validation.)</p>
+
+      <h3 class="govuk-heading-s">Using the service</h3>
+
+      <p>The XBRL validation service allows users to submit XBRL based reports (or instance documents) for testing. Submitted accounts will be tested for 
+        conformance with the XBRL v2.1 specification, and for conformance with the appropriate UK GAAP taxonomies (and Companies House Audit Exempt taxonomies 
+        for 'raw' XBRL submissions).</p>
+
+      <p class="govuk-body">When a document is submitted, the validation service will return either a "successful" response, or a list of errors found 
+        in the document. Each error will contain up to four parts:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>An error code, indicating the class of error encountered</li>
+        <li>The location of the error within the submitted instance document</li>
+        <li>An error message describing the details of the problem</li>
+        <li>Optionally, an excerpt from the XBRL v2.1 specification describing the rule that has been broken</li>
+      </ul>
+
+      <h3 class="govuk-heading-s">Using the service</h3>
+
+      <p class="govuk-body">In order to understand the errors that are reported, it is useful to understand some of the details of the validation process. Validation takes place in two stages:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>XML well-formedness, DTS discovery and XML Schema validation</li>
+        <li>XBRL validation and consistency checking</li>
+      </ul>
+
+      <p>If the validation fails during the first stage, the validator will stop and report the errors without proceeding to the second stage. During the first 
+        stage, the document is checked to ensure that it is valid, well-formed XML, and that it conforms to the relevant XML Schemas, including the XBRL taxonomy 
+        schema for the Companies House taxonomy. If the document fails either of these tests, you will receive either a MalformedXMLError, or a SchemaValidationError.</p>
+
+      <p>During this process, the validator will check that the instance document identifies the referenced taxonomies correctly (DTS discovery testing). Failure to 
+        reference a taxonomy correctly will usually result in an IllegalReference error or an UnresolvableReferenceError.
+        The second stage of validation checks the document for conformance with the validation and consistency rules laid down in the XBRL v2.1 Specification. 
+        These rules ensure that the submitted document is a valid XBRL v2.1 instance document, and that it conforms to the referenced taxonomies.</p>
+
+      <p>A third stage of validation will be performed for inline XBRL documents - this will cater for additional business rules validation e.g. to ensure that 
+        the appropriate Companies Act statements have been supplied and that the accounts fall under the 2006 Companies Act etc.</p>
+
+      <h2 class="govuk-heading-m">Common Errors</h2>
+
+      <p>Although the validator covers a very wide range of validation rules, there are a number of error scenarios that occur frequently. Whilst the validator 
+        will describe the problem accurately, it may not always be obvious what the cause is. This page describes common causes for such errors.</p>
+
+      <h3 class="govuk-heading-s">Incorrect schemaRef</h3>
+
+      <p>If an instance document references the incorrect canonical URL for a taxonomy, this will typically result in an UnresolvableReferenceError, stating that 
+        the document could not be obtained. In the case that the schema reference actually exists, but is the wrong schema for the taxonomy, this will typically 
+        result in a namespace mismatch (see below).</p>
+
+      <h3 class="govuk-heading-s">Item not found</h3>
+
+      <p>There are a number of scenarios in which the validator will fail to find the definition of an item included in the instance document. This is caught at 
+        the XML Schema validation stage, and so will result in a SchemaValidationError with a message of the form:</p>
+
+      <p>Tcvc-complex-type.2.4.a:
+        Invalid content was found starting with element
+        'uk-gaap- pt:ProfitsLossOnOrdinaryActivitiesBeforeTax'.
+        One of '{"http://www.xbrl.org/2003/instance":item, "http://www.xbrl.org/2003/instance":tuple, "http://www.xbrl.org/2003/instance":context, "http://www.xbrl.org/2003/instance":unit, "http://www.xbrl.org/2003/linkbase":footnoteLink}' is expected..
+        XBRL Line: 66. XBRL Column: 19953</p>
+
+        <p class="govuk-body">There are a number of scenarios in which the validator will fail to find the definition of an item included in the instance document. 
+          This is caught at the XML Schema validation stage, and so will result in a SchemaValidationError with a message of the form:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>A simple typo in the instance documents. For example, the error above would occur if the instance document says 
+            'pt:ProfitsLossOnOrdinaryActivitiesBeforeTax' but the taxonomy defines 'pt:ProfitLossOnOrdinaryActivitiesBeforeTax' .</li>
+          <li>A namespace mismatch. If the namespace associated with the pt prefix does not match the targetNamespace of the schema referenced in the schemaRef 
+            element of the instance document (or any other taxonomy schema document that forms part of the Discoverable Taxonomy Set) then this will result in the definition of the item not being found, and the error above being reported. This could be a result of a typo in the xmlns:pt attribute that defines the pt prefix.</li>
+        </ul>
+
+        <h3 class="govuk-heading-s">Calculation inconsistencies</h3>
+
+        <p>If an instance document does not to conform to the relationships prescribed by a calculation linkbase then a SummationItemCalculationMismatchError 
+          will be reported. The message text will describe what items were included in the calculation, and the expected and actual totals. Whilst the message 
+          text should be readily comprehensible, it is worth understanding the circumstances under which the calculations will be checked.</p>
+  
+        <p>Calculations only apply within a single context. In order to bind, the summation item (the total) must be present in the instance document, along 
+          with at least one component item. For example, if the relationship A = B + C + D is defined, the calculation will be checked if A exists, and at 
+          least one of B, C or D, within the same context.</p>
+  
+        <p>(These calculation checks will be performed on all 'raw' XBRL submissions; however for inline XBRL, no such validation will be performed.)</p>
+
+        <h3 class="govuk-heading-s">Missing mandatory elements</h3>
+
+        <p>Mandatory elements are often described by means of a requires-element arc in the definition linkbase. This states that if one element is present, 
+          then a second element must also be present. Failure to comply with this constraint will result in a RequiresElementError.</p>
+  
+        <p>Checking that the first element is present is a test that must be done outside the validator.</p>
+
+
+    </div>
+  </div>
+
+{% endblock %}

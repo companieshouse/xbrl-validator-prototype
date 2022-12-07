@@ -1,21 +1,30 @@
 {% extends "layouts/main.html" %}
 
 {% block pageTitle %}
-Home – {{serviceName}} – GOV.UK Prototype Kit
+Shortcuts – {{serviceName}} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-
-    {% include "govuk-prototype-kit/includes/homepage-top.njk" %}
-
+  <div class="govuk-grid-two-thirds">
     <h1 class="govuk-heading-xl">
-      {{ serviceName }}
+      {{serviceName}}
+      <span class="govuk-caption-xl">Version 1: December 2022</span>
     </h1>
 
-    {% include "govuk-prototype-kit/includes/homepage-bottom.njk" %}
+    <h2 class="govuk-heading-m">Entry points and links</h2>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li><a href="v1/home" class="govuk-link">Home</a></li>
+      <li><a href="#" class="govuk-link">Home - Successful</a></li>
+      <li><a href="#" class="govuk-link">Home - Failure</a></li>
+      <li><a href="#" class="govuk-link">Home - Error</a></li>
+      <li><a href="v1/overview" class="govuk-link">overview</a></li>
+    </ul>
+
+
+  
   </div>
 </div>
 
