@@ -98,39 +98,40 @@
       <p>There are a number of scenarios in which the validator will fail to find the definition of an item included in the instance document. This is caught at 
         the XML Schema validation stage, and so will result in a SchemaValidationError with a message of the form:</p>
 
-      <p>Tcvc-complex-type.2.4.a:
+      <p class="govuk-body code-box">><code>
+        cvc-complex-type.2.4.a:<br>
         Invalid content was found starting with element
-        'uk-gaap- pt:ProfitsLossOnOrdinaryActivitiesBeforeTax'.
+        'uk-gaap- pt:ProfitsLossOnOrdinaryActivitiesBeforeTax'.<br>
         One of '{"http://www.xbrl.org/2003/instance":item, "http://www.xbrl.org/2003/instance":tuple, "http://www.xbrl.org/2003/instance":context, "http://www.xbrl.org/2003/instance":unit, "http://www.xbrl.org/2003/linkbase":footnoteLink}' is expected..
-        XBRL Line: 66. XBRL Column: 19953</p>
+        XBRL Line: 66. XBRL Column: 19953</code></p>
 
-        <p class="govuk-body">There are a number of scenarios in which the validator will fail to find the definition of an item included in the instance document. 
-          This is caught at the XML Schema validation stage, and so will result in a SchemaValidationError with a message of the form:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>A simple typo in the instance documents. For example, the error above would occur if the instance document says 
-            'pt:ProfitsLossOnOrdinaryActivitiesBeforeTax' but the taxonomy defines 'pt:ProfitLossOnOrdinaryActivitiesBeforeTax' .</li>
-          <li>A namespace mismatch. If the namespace associated with the pt prefix does not match the targetNamespace of the schema referenced in the schemaRef 
-            element of the instance document (or any other taxonomy schema document that forms part of the Discoverable Taxonomy Set) then this will result in the definition of the item not being found, and the error above being reported. This could be a result of a typo in the xmlns:pt attribute that defines the pt prefix.</li>
-        </ul>
+      <p class="govuk-body">There are a number of scenarios in which the validator will fail to find the definition of an item included in the instance document. 
+        This is caught at the XML Schema validation stage, and so will result in a SchemaValidationError with a message of the form:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>A simple typo in the instance documents. For example, the error above would occur if the instance document says 
+          'pt:ProfitsLossOnOrdinaryActivitiesBeforeTax' but the taxonomy defines 'pt:ProfitLossOnOrdinaryActivitiesBeforeTax' .</li>
+        <li>A namespace mismatch. If the namespace associated with the pt prefix does not match the targetNamespace of the schema referenced in the schemaRef 
+          element of the instance document (or any other taxonomy schema document that forms part of the Discoverable Taxonomy Set) then this will result in the definition of the item not being found, and the error above being reported. This could be a result of a typo in the xmlns:pt attribute that defines the pt prefix.</li>
+      </ul>
 
-        <h3 class="govuk-heading-s">Calculation inconsistencies</h3>
+      <h3 class="govuk-heading-s">Calculation inconsistencies</h3>
 
-        <p>If an instance document does not to conform to the relationships prescribed by a calculation linkbase then a SummationItemCalculationMismatchError 
-          will be reported. The message text will describe what items were included in the calculation, and the expected and actual totals. Whilst the message 
-          text should be readily comprehensible, it is worth understanding the circumstances under which the calculations will be checked.</p>
-  
-        <p>Calculations only apply within a single context. In order to bind, the summation item (the total) must be present in the instance document, along 
-          with at least one component item. For example, if the relationship A = B + C + D is defined, the calculation will be checked if A exists, and at 
-          least one of B, C or D, within the same context.</p>
-  
-        <p>(These calculation checks will be performed on all 'raw' XBRL submissions; however for inline XBRL, no such validation will be performed.)</p>
+      <p>If an instance document does not to conform to the relationships prescribed by a calculation linkbase then a SummationItemCalculationMismatchError 
+        will be reported. The message text will describe what items were included in the calculation, and the expected and actual totals. Whilst the message 
+        text should be readily comprehensible, it is worth understanding the circumstances under which the calculations will be checked.</p>
 
-        <h3 class="govuk-heading-s">Missing mandatory elements</h3>
+      <p>Calculations only apply within a single context. In order to bind, the summation item (the total) must be present in the instance document, along 
+        with at least one component item. For example, if the relationship A = B + C + D is defined, the calculation will be checked if A exists, and at 
+        least one of B, C or D, within the same context.</p>
 
-        <p>Mandatory elements are often described by means of a requires-element arc in the definition linkbase. This states that if one element is present, 
-          then a second element must also be present. Failure to comply with this constraint will result in a RequiresElementError.</p>
-  
-        <p>Checking that the first element is present is a test that must be done outside the validator.</p>
+      <p>(These calculation checks will be performed on all 'raw' XBRL submissions; however for inline XBRL, no such validation will be performed.)</p>
+
+      <h3 class="govuk-heading-s">Missing mandatory elements</h3>
+
+      <p>Mandatory elements are often described by means of a requires-element arc in the definition linkbase. This states that if one element is present, 
+        then a second element must also be present. Failure to comply with this constraint will result in a RequiresElementError.</p>
+
+      <p>Checking that the first element is present is a test that must be done outside the validator.</p>
 
 
     </div>
