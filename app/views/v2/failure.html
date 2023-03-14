@@ -1,0 +1,47 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../includes/account-banner.html" %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block header %}
+  {% include "../includes/header.html" %}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-notification-banner govuk-notification-banner--failure" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            Failure
+          </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+          <h3 class="govuk-notification-banner__heading">
+            The validation of your Instance document has been not been successful
+          </h3>
+          <p class="govuk-body">The validation failed with the following errors:</p>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>XML document structures must start and end within the same entity.</li>
+            <li>The element type "style" must be terminated by the matching end-tag.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+
+      <p>You can <a href="">validate another single instance or ZIP file</a>.</p>
+
+      <p>You can return to the <a href="https://find-and-update.company-information.service.gov.uk/"> Companies House home page</a>.</p>
+    </div>
+  </div>
+
+{% endblock %}

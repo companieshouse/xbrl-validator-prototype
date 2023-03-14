@@ -10,28 +10,73 @@ Shortcuts – {{serviceName}}
   <div class="govuk-grid-two-thirds">
     <h1 class="govuk-heading-xl">
       {{serviceName}}
-      <span class="govuk-caption-xl">Version 1: December 2022</span>
     </h1>
 
-    <h2 class="govuk-heading-m">Interactive prototype</h2>
+    <h2 class="govuk-heading-l">Prototype versions</h2>
 
-    <p class="govuk-body">For a success message upload a file with an 'xhtml' extension. Any other extension will result in a failure message.</p>
+    <div class="govuk-tabs" data-module="govuk-tabs">
+      <h2 class="govuk-tabs__title">
+        Contents
+      </h2>
+      <ul class="govuk-tabs__list">
+        <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+          <a class="govuk-tabs__tab" href="#v2">
+            Version 2
+          </a>
+        </li>
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#v1">
+            Version 1
+          </a>
+        </li>
+      </ul>
+      <div class="govuk-tabs__panel" id="v2">
+        <h2 class="govuk-heading-l">Version 2</h2>
 
-    <p class="govuk-body"><a href="v1/xbrl-validator-interactive" class="govuk-link">XBRL Validator interactive prototype</a></p>
+        <h3 class="govuk-heading-m">14 March 2023</h3>
 
-    <h2 class="govuk-heading-m">Entry points</h2>
+        <hr>
+        <h3 class="govuk-heading-m">Shortcuts</h3>
+        <h3 class="govuk-heading-s">Journey</h3>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="v2/start" class="govuk-link">Start</a></li>
+          <li><a href="v2/sign-in" class="govuk-link">Sign-in</a></li>
+          <li><a href="v2/presenter-id" class="govuk-link">Presenter ID</a></li>
+          <li><a href="v2/presenter-auth-code" class="govuk-link">Presenter auth code</a></li>
+          <li><a href="v2/account-submission" class="govuk-link">Account submission</a></li>
+          <li><a href="v2/account-image-error" class="govuk-link">Account submission - image error</a></li>
+          <li><a href="v2/success" class="govuk-link">Validation successful</a></li>
+          <li><a href="v2/failure" class="govuk-link">Validation unsuccessful</a></li>
+        </ul>
 
-    <ul class="govuk-list govuk-list--bullet">
-      <li><a href="v1/xbrl-validator" class="govuk-link">XBRL Validator</a></li>
-      <li><a href="v1/xbrl-validator-successful" class="govuk-link">XBRL Validator - Successful</a></li>
-      <li><a href="v1/xbrl-validator-failure" class="govuk-link">XBRL Validator - Failure</a></li>
-      <li><a href="v1/xbrl-validator-error" class="govuk-link">XBRL Validator - Error</a></li>
-      <li><a href="v1/xbrl-validator-overview" class="govuk-link">XBRL Validator overview</a></li>
-      <li><a href="v1/accessibility-statement" class="govuk-link">Accessibility statement</a></li>
-    </ul>
+        <h3 class="govuk-heading-s">Screen flow diagram</h3>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            <a href="https://app.mural.co/invitation/mural/companieshouse8589/1678780074161?sender=u9bc72e5725f1871777091172&key=d540c5c8-6b5d-4345-b112-7f693502fb8f" class="govuk-link govuk-link--no-visited-state" target="_blank">Mural screen flow diagram</a>
+          </li>
+        </ul>
 
+      </div>
+      <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="v1">
+        <h2 class="govuk-heading-l">Version 1</h2>
 
-  
+        <hr>
+        <h3 class="govuk-heading-m">Shortcuts</h3>
+        <h3 class="govuk-heading-m">December 2022</h3>
+
+        <h3 class="govuk-heading-s">Journey</h3>
+        <ul class="govuk-list govuk-list--bullet">
+          <li><a href="v1/xbrl-validator" class="govuk-link">XBRL Validator</a></li>
+          <li><a href="v1/xbrl-validator-successful" class="govuk-link">XBRL Validator - Successful</a></li>
+          <li><a href="v1/xbrl-validator-failure" class="govuk-link">XBRL Validator - Failure</a></li>
+          <li><a href="v1/xbrl-validator-error" class="govuk-link">XBRL Validator - Error</a></li>
+          <li><a href="v1/xbrl-validator-overview" class="govuk-link">XBRL Validator overview</a></li>
+          <li><a href="v1/accessibility-statement" class="govuk-link">Accessibility statement</a></li>
+        </ul>
+
+      </div>
+    </div>
+
   </div>
 </div>
 

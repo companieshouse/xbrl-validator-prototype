@@ -1,0 +1,62 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../includes/account-banner.html" %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block header %}
+  {% include "../includes/header.html" %}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <!-- Check for error -->
+    {% if errorAuth %}
+    {{ govukErrorSummary({
+        titleText: "There is a problem",
+        errorList: errorList
+      }) }}
+    {% endif %}
+
+
+    <form action="{{currentUrl}}" method="post">
+
+        <!-- Check for error -->
+        {% if errorAuth %}
+        <div class="govuk-form-group govuk-form-group--error">
+        {% else %}
+        <div class="govuk-form-group">
+        {% endif %} 
+          <h1 class="govuk-label-wrapper">
+            <label class="govuk-label govuk-label--l" for="auth-code">
+              What is your Presenter authentication code?
+            </label>
+            <!-- Check for error -->
+            {% if errorAuth %}
+            <p id="auth-error" class="govuk-error-message">
+              <span class="govuk-visually-hidden">Error:</span> Enter your Presenter authentication code
+            </p>
+            {% endif %} 
+          </h1>
+          <input class="govuk-input govuk-input--width-20" id="auth-code" name="auth-code" type="text">
+        </div>
+
+        <p>If you have forgotten your test presenter authentication code 
+          or wish to set up a test account, email xml@companieshouse.gov.uk.</p>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

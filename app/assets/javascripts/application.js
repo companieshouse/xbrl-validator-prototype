@@ -8,12 +8,12 @@ window.GOVUKPrototypeKit.documentReady(() => {
 })
 
 
-function file_check() {
+function file_check_single() {
   var error_summary = document.getElementById("file-error-summary");
-  var file_upload = document.getElementById("file-upload");
-  var file_upload_text = document.getElementById("file-upload-xhtml-error");
+  var file_upload = document.getElementById("upload-single");
+  var file_upload_text = document.getElementById("upload-single-xhtml-error");
   var file_upload_input = document.getElementById("file-upload-xhtml-error");
-  var file_name = document.getElementById("file-upload-1").value;
+  var file_name = document.getElementById("upload-single-1").value;
   var success_message = document.getElementById("success-message");
   var failure_message = document.getElementById("failure-message");
 

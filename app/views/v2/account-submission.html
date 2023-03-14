@@ -1,0 +1,70 @@
+{% extends "layouts/main.html" %}
+
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {% include "../includes/account-banner.html" %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block header %}
+  {% include "../includes/header.html" %}
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+      <!-- Check for error -->
+      {% if errorSubmission %}
+        {{ govukErrorSummary({
+          titleText: "There is a problem",
+          errorList: errorList
+        }) }}
+      {% endif %}
+
+    <h1 class="govuk-heading-xl">
+      Account submission
+    </h1>
+
+    <form action="{{currentUrl}}" method="post">
+
+      <div class="govuk-form-group" id="upload">
+        <label class="govuk-label" for="upload-file">
+          Upload a instance document taxonomy file
+        </label>
+        <p id="upload-file-error" class="govuk-error-message govuk-visually-hidden">
+          <span class="govuk-visually-hidden">Error:</span> The selected file must be xhtml.
+        </p>
+        <input class="govuk-file-upload" id="upload-file" name="upload-file" type="file">
+      </div>
+
+      <p class="govuk-body">For single instance FRC submissions, you may view the generated image 
+        by selecting 'Show image'. </p>
+
+      <div class="govuk-inset-text">
+        The ‘Show Image’ function is not available for Zip Submissions.
+        Companies House does not process these submissions through 
+        the image system. The iXBRL contained in the submission is made available 
+        for the user to download or to open in a web browser.
+      </div>
+
+      <div>
+        <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+          Show image
+        </button>
+      </div>
+
+      <p class="govuk-body">The validation process may take a few minutes.</p>
+
+      <button class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
