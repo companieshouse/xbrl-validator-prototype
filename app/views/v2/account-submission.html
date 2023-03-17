@@ -24,23 +24,17 @@
       {% endif %}
 
     <h1 class="govuk-heading-xl">
-      Account submission
+      Upload your accounts file
     </h1>
 
-    <form action="{{currentUrl}}" method="post">
+        <p class="govuk-body">To use this service you'll need to:</p>
+            <ul class="govuk-list govuk-list--bullet">
+        <li>upload an iXBRL accounts file</li>
+        <li>select continue to check your accounts meet the iXBRL specification and business validation rules</p>
+        <li>zip file submissions, including UK Single Electronic Format (UKSEF) Taxonomy submissions and Welsh/English dual submissions </li>
+      </ul>
 
-      <div class="govuk-form-group" id="upload">
-        <label class="govuk-label" for="upload-file">
-          Upload a instance document taxonomy file
-        </label>
-        <p id="upload-file-error" class="govuk-error-message govuk-visually-hidden">
-          <span class="govuk-visually-hidden">Error:</span> The selected file must be xhtml.
-        </p>
-        <input class="govuk-file-upload" id="upload-file" name="upload-file" type="file">
-      </div>
 
-      <p class="govuk-body">For single instance FRC submissions, you may view the generated image 
-        by selecting 'Show image'. </p>
 
       <div class="govuk-inset-text">
         The ‘Show Image’ function is not available for Zip Submissions.
@@ -48,6 +42,20 @@
         the image system. The iXBRL contained in the submission is made available 
         for the user to download or to open in a web browser.
       </div>
+
+
+    <form action="{{currentUrl}}" method="post">
+
+      <div class="govuk-form-group" id="upload">
+        <label class="govuk-label" for="upload-file">
+          Upload an iXBRL accounts file. 
+        </label>
+        <p id="upload-file-error" class="govuk-error-message govuk-visually-hidden">
+          <span class="govuk-visually-hidden">Error:</span> The selected file must be xhtml.
+        </p>
+        <input class="govuk-file-upload" id="upload-file" name="upload-file" type="file">
+      </div>
+
 
       <div>
         <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
