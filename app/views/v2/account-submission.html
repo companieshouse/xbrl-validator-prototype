@@ -27,21 +27,8 @@
       Upload your accounts file
     </h1>
 
-        <p class="govuk-body">To use this service you'll need to:</p>
-            <ul class="govuk-list govuk-list--bullet">
-        <li>upload an iXBRL accounts file</li>
-        <li>select continue to check your accounts meet the iXBRL specification and business validation rules</p>
-        <li>zip file submissions, including UK Single Electronic Format (UKSEF) Taxonomy submissions and Welsh/English dual submissions </li>
-      </ul>
 
 
-
-      <div class="govuk-inset-text">
-        The ‘Show Image’ function is not available for Zip Submissions.
-        Companies House does not process these submissions through 
-        the image system. The iXBRL contained in the submission is made available 
-        for the user to download or to open in a web browser.
-      </div>
 
 
     <form action="{{currentUrl}}" method="post">
@@ -56,6 +43,11 @@
         <input class="govuk-file-upload" id="upload-file" name="upload-file" type="file">
       </div>
 
+        <p class="govuk-body">To preview the image for single instance FRC submissions, select ‘show image’. </p>
+
+            <div class="govuk-inset-text">
+        You cannot view an image for zip file submissions, including UK Single Electronic Format (UKSEF) Taxonomy submissions and Welsh/English dual submissions.
+      </div>
 
       <div>
         <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
