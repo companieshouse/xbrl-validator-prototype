@@ -124,7 +124,7 @@ router.get('/v2/account-submission', function (req, res) {
 })
 
 router.post('/v2/account-submission', function (req, res) {
-  res.redirect('/v2/success')
+  res.redirect('/v2/success-single')
 })
 
 
