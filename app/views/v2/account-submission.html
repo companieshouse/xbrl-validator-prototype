@@ -26,14 +26,12 @@
     <h1 class="govuk-heading-xl">
       Upload your accounts file
     </h1>
-
-     <p class="govuk-body">To use this service, select choose file to upload your iXBRL accounts file.</p>
     
     <form action="{{currentUrl}}" method="post">
 
       <div class="govuk-form-group" id="upload">
         <label class="govuk-label" for="upload-file">
-          Upload an iXBRL accounts file. 
+          Upload your accounts file, then select continue. 
         </label>
         <p id="upload-file-error" class="govuk-error-message govuk-visually-hidden">
           <span class="govuk-visually-hidden">Error:</span> The selected file must be xhtml.
@@ -41,7 +39,6 @@
         <input class="govuk-file-upload" id="upload-file" name="upload-file" type="file">
       </div>
 
-      <p class="govuk-body">Select continue to check your accounts meet the iXBRL specification and business validation rules.</p>
 
       <p class="govuk-body">The validation process may take a few minutes.</p>
 
